@@ -26,6 +26,7 @@ function searchRandom() {
     $.ajax({
         type: 'GET',
         dataType: "json",
+        async: false,
         url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
         data: {  
             location: '-33.883576, 151.200505',
