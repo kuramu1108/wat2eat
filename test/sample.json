@@ -1,0 +1,40 @@
+// sample data of nearbysearch
+{
+  "geometry": {
+    "location": {
+      "lat": -33.8842591,
+      "lng": 151.2020824
+    }
+  },
+  "icon": "https:\/\/maps.gstatic.com\/mapfiles\/place_api\/icons\/restaurant-71.png",
+  "id": "192364c17cd1d4f19cf5f3e48ecf3927d08da78f",
+  "name": "Garden Restaurant",
+  "opening_hours": {
+    "open_now": true,
+    "weekday_text": [
+      
+    ]
+  },
+  "photos": [
+    {
+      "height": 282,
+      "html_attributions": [
+        "Garden Restaurant"
+      ],
+      "photo_reference": "CoQBcwAAAC1JNRidVSjIHXcwkscl_NP_QjL_kITPA-PvR6qjMPhjm3lXN2SudI2N4QB_5GSIFjuHJbhxo0GhRwvhW_4tqiegS2NyRJ2S8OcR5wPkF76_VlrISrILCpdEduPMQENRBEIuSAvvBkQ-GRzzBhU7HgnMcpxDMT_nhgB90TmurRcuEhD9vnFMbGYYLQ809xjcmx13GhRTRrBY-VD6pfgQIoR-SESwCVm7ng",
+      "width": 282
+    }
+  ],
+  "place_id": "ChIJ77KNYiWuEmsRLPvbpZfGasc",
+  "rating": 3.3,
+  "reference": "CnRlAAAAfzb-xqGVTPBWvMUkw7dNDeaMh6oDEb6nLpkKP2zPd2291WO6KbLVDLAICC9ZJcGO-U7CNAFNXfXaVH-HZhtp7UFTzdVJjTzXx-QJvVND3JEac0JLQUhnGMoO5tyVZjlvZQ3Mos24cqqB8vW_UvSG3BIQgbxSYrjIiqqP82ZIbg9AXBoUuvAU_PmWTEeSwMVKpmqrjR28g1U",
+  "scope": "GOOGLE",
+  "types": [
+    "meal_delivery",
+    "restaurant",
+    "food",
+    "point_of_interest",
+    "establishment"
+  ],
+  "vicinity": "2 Broadway, Ultimo"
+}
