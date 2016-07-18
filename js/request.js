@@ -13,14 +13,7 @@ function search() {
             // minprice: 0,
             key: 'AIzaSyDiamlgPmmtZfYLeByjTmJoktz-UIESpQE'
         },
-        success: function(data) {
-            var result = "";
-            var results = data.results;
-            for (var i = 0; i < results.length; i++) {
-                result += results[i].name + "<br>";
-            }
-            $("#result").html(result);
-        }
+        success: fillResult
     });
 }
 
@@ -56,6 +49,8 @@ function searchRandom() {
                     result += "photo_reference: " + photos[i].photo_reference + "<br>"; 
                 }
                 getPhoto(photos[0].photo_reference);
+            } else {
+                $('#image').attr('src', '#');
             }
 
             $("#result").html(result);
@@ -87,7 +82,46 @@ function getPhoto(photo_reference){
     $('#image').attr('src', imageurl).fadeIn();
 }
 
+function fillResult(data) {
+    var result = "";
+    var results = data.results;
+    for (var i = 0; i < results.length; i++) {
+        result += results[i].name + "<br>";
+    }
+    $("#result").html(result);
+}
 
+function searchCurrent(position) {
+    var location = "" + position.coords.latitude + ", " + position.coords.longitude;
+    alert(location);
+    var qs = {
+        location: location,
+        radius: 500,
+        types: 'restaurant',
+        key: key
+    }
+
+    request(qs, fillResult);
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(searchCurrent);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function request(qs, callback) {
+    $.ajax({
+        type: 'GET',
+        dataType: "json",
+        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        data: qs,
+        success: callback
+    });
+}
 
 $('#test').click(search);
 $('#random').click(searchRandom);
+$('#current').click(getLocation);
