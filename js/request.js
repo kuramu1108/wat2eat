@@ -9,9 +9,11 @@ function search() {
             location: '-33.883576, 151.200505',
             radius: 300,
             types: 'restaurant',
-            headers: {
-                "Access-Control-Allow-Origin": "http://wat2eat-kuramu1108.ose-pilot.uts.edu.au",
-            },
+            // not working 
+            // beforeSend: function (request)
+            // {
+            //     request.setRequestHeader("Access-Control-Allow-Origin", "*");
+            // },
             // maxprice: 3,
             // minprice: 0,
             key: 'AIzaSyDiamlgPmmtZfYLeByjTmJoktz-UIESpQE'
