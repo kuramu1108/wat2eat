@@ -84,11 +84,29 @@ function createMarker(place) {
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
+        infowindow.setContent(generateInfoHTML(place));
         infowindow.open(map, this);
     });
 
     changeButtonText('roll', 'ROLL AGAIN');
+}
+
+function generateInfoHTML(place) {
+    var html = "";
+    html += "<h4>" + place.name + "</h4>";
+    html += "<ul>";
+    html += "<li>" + place.formatted_address + "</li>";
+    html += "<li>" + place.formatted_phone_number + "</li>";
+    html += "<li>" + place.rating + "</li>";
+    html += "<li>" + place.website + "</li>";
+    html += "</ul>";
+    if (place.photos) {
+        var imgurl = place.photos[0].getUrl({
+            maxWidth: 300
+        });
+        html += '<img src="' + imgurl + '">';
+    }
+    return html;
 }
 
 // helping functions
