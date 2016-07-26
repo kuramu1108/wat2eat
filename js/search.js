@@ -26,7 +26,6 @@ function radarSearch(position) {
         zoom: 15
     });
 
-    infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.radarSearch({
     location: pyrmont,
@@ -83,6 +82,10 @@ function createMarker(place) {
         animation: google.maps.Animation.DROP
     });
 
+    infowindow = new google.maps.InfoWindow({
+        maxWidth: 400
+    });
+
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(generateInfoHTML(place));
         infowindow.open(map, this);
@@ -94,15 +97,18 @@ function createMarker(place) {
 function generateInfoHTML(place) {
     var html = "";
     html += "<h4>" + place.name + "</h4>";
-    html += "<ul>";
-    html += "<li>" + place.formatted_address + "</li>";
-    html += "<li>" + place.formatted_phone_number + "</li>";
-    html += "<li>" + place.rating + "</li>";
-    html += "<li>" + place.website + "</li>";
-    html += "</ul>";
+    html += "<table>";
+    html += "<tr><td><i class='fa fa-location-arrow info'></i></td><td>" + place.vicinity + "</td></tr>";
+    if (place.formatted_phone_number)
+        html += "<tr><td><i class='fa fa-phone info'></i></td><td>" + place.formatted_phone_number + "</td></tr>";
+    if (place.rating) 
+        html += "<tr><td><i class='fa fa-star info'></i></td><td>" + place.rating + "</td></tr>";
+    if (place.website) 
+        html += "<tr><td><i class='fa fa-globe info'></i></td><td><a href='" + place.website + "' target='_blank'>website</a></td></tr>";
+    html += "</table>";
     if (place.photos) {
         var imgurl = place.photos[0].getUrl({
-            maxWidth: 300
+            maxWidth: 280
         });
         html += '<img src="' + imgurl + '">';
     }

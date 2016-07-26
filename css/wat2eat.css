@@ -1,3 +1,8 @@
+/*@font-face {
+    font-family: ARCfont;
+    src: url("../fonts/ARCfont.ttf");
+}*/
+
 html * {
     font-family: 'Quicksand', sans-serif;
 }
@@ -36,4 +41,21 @@ footer {
 
 .row-content {
     padding: 5px 5px 5px 5px;
+}
+
+.jumbotron {
+    background-image: url("../img/lobster.png");
+    background-size: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.jumbotron p {
+    color: #fff;
+}
+
+.info {
+    color: #D34747; 
 }
