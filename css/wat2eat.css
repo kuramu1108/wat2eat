@@ -1,0 +1,19 @@
+#map { 
+    height: 300px 
+}
+
+footer {
+    margin: 10px 10px;
+}
+
+.option {
+    font-size: 20px;
+    border-left: 5px solid #D34747;
+    padding-left: 8px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.row-content {
+    padding: 5px 5px 5px 5px;
+}

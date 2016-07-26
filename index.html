@@ -8,10 +8,11 @@
     <title>Wat2Eat</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!--<link rel="stylesheet" href="css/bootstrap-theme.min.css">-->
+    <link rel="stylesheet" href="css/bootstrap-toggle.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
-    <!--<link rel="stylesheet" href="css/custom.css">-->
+    <link rel="stylesheet" href="css/wat2eat.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,6 +21,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -52,18 +54,39 @@
          </div>
      </header>
      <div class="container">
-         <div class="row col-xs-12">
-             <button id="test" class="btn btn-default">test</button> 
-             <button id="random" class="btn btn-default">random</button>
-             <button id="current" class="btn btn-default">location</button>
+         <div class="row row-content">
+             <div class="col-xs-12">
+                <button id="test" class="btn btn-default">test</button> 
+                <button id="random" class="btn btn-default">random</button>
+                <button id="current" class="btn btn-default">current</button>
+            </div>
          </div>
-         <div class="row col-xs-12" id="result">
-             
+
+         <div class="row row-content">
+             <div id="map" class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-0">
+                 
+             </div>
+             <!-- 12 for xs; 3 for sm -->
+            <div class="col-xs-11 col-xs-offset-1 col-sm-4 col-sm-offset-0">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-xs-5 col-sm-8 option">filter1</div>
+                        <div class="col-xs-6 col-sm-3">
+                            <input type="checkbox" name="filter1" id="filter1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-5 col-sm-8 option">filter2</div>
+                        <div class="col-xs-6 col-sm-3">
+                            <input type="checkbox" name="filter2" id="filter2" data-toggle="toggle">
+                        </div>
+                    </div>
+                </form>
+            </div>
          </div>
-         <div class="row col-xs-12">
-             <img id="image">
-         </div>
+         
      </div>
+    
      <footer>
          <div class="container">
              <div class="row">
@@ -83,6 +106,26 @@
      </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/request.js"></script>
+    <script src="js/bootstrap-toggle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgly5dBR1sTqYpXYlRosYB9OZMTaZG01U&libraries=places" async defer></script>
+    <script src="js/search.js"></script>
+    <script>
+        $(function() {
+            $('#filter1').bootstrapToggle({
+                onstyle: "danger"
+            });
+        })
+        // $('#filter1').bootstrapSwitch();
+        // $('#filter2').bootstrapSwitch();
+    //     var test = {
+    //     hi: 1234,
+    //     no: 123
+    // }
+
+    // if (test.gg == null) {
+    //     alert('success');
+    // }
+    // test.gg ? alert('yes'):alert('no');
+    </script>
 </body>
 </html>
