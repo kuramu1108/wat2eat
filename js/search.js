@@ -91,6 +91,8 @@ function processResults(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         totalResults = results;
         getRandomDetail();
+    } else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+        alert('not restaurant found');
     }
 }
 
