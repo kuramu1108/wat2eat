@@ -59,7 +59,9 @@
              <div class="col-xs-12">
                 <button id="test" class="btn btn-default">test</button> 
                 <button id="random" class="btn btn-default">random</button>
-                <button id="current" class="btn btn-danger">ROLL THE DICE</button>
+            </div>
+            <div class="col-xs-12" align="center">
+                <button id="roll" class="btn btn-danger">ROLL THE DICE</button>
             </div>
          </div>
 
@@ -71,14 +73,14 @@
             <div class="col-xs-11 col-xs-offset-1 col-sm-4 col-sm-offset-0">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <div class="col-xs-5 col-sm-8 option">Filter Opening</div>
-                        <div class="col-xs-6 col-sm-3">
+                        <div class="col-xs-8 col-sm-8 option">Filter Opening</div>
+                        <div class="col-xs-3 col-sm-3">
                             <input type="checkbox" name="filter-open" id="filter-open">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-xs-5 col-sm-8 option">Exculde FastFood</div>
-                        <div class="col-xs-6 col-sm-3">
+                        <div class="col-xs-8 col-sm-8 option">Exculde FastFood</div>
+                        <div class="col-xs-3 col-sm-3">
                             <input type="checkbox" name="exclude-ff" id="exclude-ff">
                         </div>
                     </div>
@@ -111,14 +113,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgly5dBR1sTqYpXYlRosYB9OZMTaZG01U&libraries=places" async defer></script>
     <script src="js/search.js"></script>
     <script> 
-        $(function() {
-            var toggles = ['filter-open', 'exclude-ff'];
-            for (var i = 0; i < toggles.length; i++) {
-                $('#'+toggles[i]).bootstrapToggle({
-                    onstyle: "danger"
-                });
-            }
-        })
         // $('#filter1').bootstrapSwitch();
         // $('#filter2').bootstrapSwitch();
     //     var test = {
