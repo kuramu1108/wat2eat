@@ -1,9 +1,26 @@
 #map { 
-    height: 300px 
+    height: 300px;
+    margin-bottom: 10px;
 }
 
 footer {
     margin: 10px 10px;
+}
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.navbar {
+    background-color: #D34747;
+    margin-bottom: 5px;
+}
+
+.navbar-default .navbar-header > a,
+.navbar-default .navbar-header > a:hover,
+.navbar-default .navbar-header > a:focus {
+    color: #fff;
 }
 
 .option {
@@ -16,4 +33,7 @@ footer {
 
 .row-content {
     padding: 5px 5px 5px 5px;
+}
+
+.jumbotron {
 }

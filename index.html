@@ -38,7 +38,7 @@
     </nav>
      <header class="jumbotron">
          <div class="container">
-             <div class="row">
+             <div class="row row-header">
                  <div class="col-xs-12 col-sm-8">
                      <!--<h3>Wat2Eat</h3>-->
                      <p>
@@ -58,7 +58,7 @@
              <div class="col-xs-12">
                 <button id="test" class="btn btn-default">test</button> 
                 <button id="random" class="btn btn-default">random</button>
-                <button id="current" class="btn btn-default">current</button>
+                <button id="current" class="btn btn-danger">ROLL THE DICE</button>
             </div>
          </div>
 
@@ -78,7 +78,7 @@
                     <div class="form-group">
                         <div class="col-xs-5 col-sm-8 option">filter2</div>
                         <div class="col-xs-6 col-sm-3">
-                            <input type="checkbox" name="filter2" id="filter2" data-toggle="toggle">
+                            <input type="checkbox" name="filter2" id="filter2">
                         </div>
                     </div>
                 </form>
@@ -109,11 +109,14 @@
     <script src="js/bootstrap-toggle.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgly5dBR1sTqYpXYlRosYB9OZMTaZG01U&libraries=places" async defer></script>
     <script src="js/search.js"></script>
-    <script>
+    <script> 
         $(function() {
-            $('#filter1').bootstrapToggle({
-                onstyle: "danger"
-            });
+            var toggles = ['filter1', 'filter2'];
+            for (var i = 0; i < toggles.length; i++) {
+                $('#'+toggles[i]).bootstrapToggle({
+                    onstyle: "danger"
+                });
+            }
         })
         // $('#filter1').bootstrapSwitch();
         // $('#filter2').bootstrapSwitch();
