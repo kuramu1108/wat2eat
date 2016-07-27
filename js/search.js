@@ -39,7 +39,7 @@ function processResults(results, status) {
         totalResults = results;
         getRandomDetail();
     } else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-        alert('not restaurant found');
+        zeroResultAlert();
     }
 }
 
@@ -87,17 +87,20 @@ function createMarker(place) {
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(generateInfoHTML(place));
-        infowindow.open(map, this);
+        createInfoModal(place);
+        
+        // infowindow.setContent(generateInfoHTML(place));
+        // infowindow.open(map, this);
     });
 
     changeButtonText('roll', 'ROLL AGAIN');
 }
 
-function generateInfoHTML(place) {
+function createInfoModal(place) {
+    // modal title
+    $('#place-name').html(place.name);
+    // modal table
     var html = "";
-    html += "<h4>" + place.name + "</h4>";
-    html += "<table>";
     html += "<tr><td><i class='fa fa-location-arrow info'></i></td><td>" + place.vicinity + "</td></tr>";
     if (place.formatted_phone_number)
         html += "<tr><td><i class='fa fa-phone info'></i></td><td>" + place.formatted_phone_number + "</td></tr>";
@@ -105,14 +108,16 @@ function generateInfoHTML(place) {
         html += "<tr><td><i class='fa fa-star info'></i></td><td>" + place.rating + "</td></tr>";
     if (place.website) 
         html += "<tr><td><i class='fa fa-globe info'></i></td><td><a href='" + place.website + "' target='_blank'>website</a></td></tr>";
-    html += "</table>";
+    $('#place-info').html(html);
+    // modal image
     if (place.photos) {
         var imgurl = place.photos[0].getUrl({
             maxWidth: 280
         });
-        html += '<img src="' + imgurl + '">';
+        $('#place-image').html('<img src="' + imgurl + '">');
     }
-    return html;
+    // show modal
+    $('#infoModal').modal("show");
 }
 
 // helping functions
@@ -130,6 +135,18 @@ function changeButtonText(id, text) {
     $('#' + id).text(text);
 }
 
+// bootstrap trigger functions
+function zeroResultAlert() {
+    $('#resultAlert').show()
+}
+
+function filterPopover(inputId, popId) {
+    $('#'+ inputId).change(function(){
+        if ($(this).prop('checked')) $('#' + popId).popover("show");
+        else $('#' + popId).popover("hide"); 
+    });
+}
+
 // jquery ondocument ready
 $(function() {
     var toggles = ['filter-open', 'exclude-ff'];
@@ -142,6 +159,17 @@ $(function() {
     $('#test').click(nearbySearch);
     $('#random').click(radarSearchtest);
     $('#roll').click(getLocation);
+
+    $('#resultAlert').hide();
+    
+    // $('#check').popover({
+    //     placement: "top",
+    //     title: "Wraning!",
+    //     html: true,
+    //     content: "Restaurants with no opening hour records would be dismissed",
+    //     trigger: "manual"
+    // });
+    // filterPopover('filter-open', 'check');
 })
 
 // testing functions
