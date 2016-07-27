@@ -20,6 +20,12 @@ html * {
     border: 15px solid transparent; 
 }
 
+#place-image img {
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
 /* bootstrap class/tags */
 footer {
     margin: 10px 10px;
