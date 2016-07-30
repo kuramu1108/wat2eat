@@ -115,7 +115,7 @@ function createInfoModal(place) {
             maxWidth: 280
         });
         $('#place-image').html('<img src="' + imgurl + '">');
-    }
+    } else $('#place-image').html("");
     // show modal
     $('#infoModal').modal("show");
 }

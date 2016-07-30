@@ -13,7 +13,7 @@ html * {
 }
 
 #infoModal {
-    top: 20%
+    
 }
 
 #place-info td {
@@ -42,7 +42,7 @@ footer {
 
 .navbar {
     background-color: #D34747;
-    margin-bottom: 5px;
+    margin: 0px;
 }
 
 .navbar-default .navbar-header > a,
