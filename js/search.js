@@ -2,6 +2,8 @@
 var map;
 var infowindow;
 var totalResults;
+var pyrmont;
+var userlocation = 'img/map-marker-2-xxl.png';
 
 var fastfood_list = ['Hungry Jack', 'KFC', 'McDonalds'];
 
@@ -16,8 +18,8 @@ function getLocation() {
 function radarSearch(position) {
     initMap();
 
-    var pyrmont = {
-        lat: position.coords.latitude, 
+    pyrmont = {
+        lat: position.coords.latitude,
         lng: position.coords.longitude
     };
 
@@ -46,7 +48,7 @@ function processResults(results, status) {
 function getRandomDetail() {
     var randomPick = random(0, totalResults.length - 1);
     var place = totalResults[randomPick];
-    
+
     var request = {
         placeId: place.place_id
     }
@@ -58,7 +60,7 @@ function getRandomDetail() {
 function filterDetail (place, status){
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         var allGood = true;
-        
+
         if ($('#filter-open').is(':checked')) {
             if (place.opening_hours) {
                 if (!place.opening_hours.open_now) allGood = false;
@@ -86,9 +88,16 @@ function createMarker(place) {
         maxWidth: 400
     });
 
+	var userMarker = new google.maps.Marker({
+        position: pyrmont,
+        map: map,
+        icon: userlocation,
+		animation: google.maps.Animation.DROP
+    });
+
     google.maps.event.addListener(marker, 'click', function() {
         createInfoModal(place);
-        
+
         // infowindow.setContent(generateInfoHTML(place));
         // infowindow.open(map, this);
     });
@@ -104,9 +113,9 @@ function createInfoModal(place) {
     html += "<tr><td><i class='fa fa-location-arrow info'></i></td><td>" + place.vicinity + "</td></tr>";
     if (place.formatted_phone_number)
         html += "<tr><td><i class='fa fa-phone info'></i></td><td>" + place.formatted_phone_number + "</td></tr>";
-    if (place.rating) 
+    if (place.rating)
         html += "<tr><td><i class='fa fa-star info'></i></td><td>" + place.rating + "</td></tr>";
-    if (place.website) 
+    if (place.website)
         html += "<tr><td><i class='fa fa-globe info'></i></td><td><a href='" + place.website + "' target='_blank'>website</a></td></tr>";
     $('#place-info').html(html);
     // modal image
@@ -143,7 +152,7 @@ function zeroResultAlert() {
 function filterPopover(inputId, popId) {
     $('#'+ inputId).change(function(){
         if ($(this).prop('checked')) $('#' + popId).popover("show");
-        else $('#' + popId).popover("hide"); 
+        else $('#' + popId).popover("hide");
     });
 }
 
@@ -161,7 +170,7 @@ $(function() {
     $('#roll').click(getLocation);
 
     $('#resultAlert').hide();
-    
+
     // $('#check').popover({
     //     placement: "top",
     //     title: "Wraning!",
@@ -203,7 +212,7 @@ function callback(results, status) {
 // 191 results
 function radarSearchtest() {
     initMap();
-    
+
     var pyrmont = {lat: -33.883576, lng: 151.200505};
 
     map = new google.maps.Map(document.getElementById('map'), {
